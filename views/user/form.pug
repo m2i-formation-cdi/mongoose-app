@@ -1,0 +1,14 @@
+extends ../layout.pug
+
+block content
+    div.col-6
+        form(method="post")
+            .form-group
+                label email
+                input(type="email" class="form-control" name="email")
+            .form-group
+                label Mot de passe
+                input(type="password" class="form-control" name="pwd")
+
+            .form-group
+                button(class="btn btn-primary btn-block") Valider
