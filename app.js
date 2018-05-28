@@ -18,33 +18,11 @@ mongoose.connect('mongodb://localhost/mongo-test');
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-//Utilisation de la route
+//Utilisation des routes
 app.use('/user', userRoutes);
 
-//Contrôleurs de l'application
-app.get('/', (req, res)=>{
-    //Création d'un utilisateur en fonction du modèle
-    let user = new userModel({
-        email: 'toto@mail.com',
-        password: '123',
-        createdAt: new Date()
-    });
-    // Enregistrement de l'utilisateur dans la BD
-    user.save();
 
-    //Liste des utilisateurs
-    userModel.find({}, (err, result) =>{
-        if(err){
-            console.log(err);
-            res.end('Erreur Mongoose');
-        } else {
-            res.json(result);
-        }
-    });
-
-    
-});
-
+//Lancement du serveur
 app.listen(3000, ()=>{
     console.log('Le serveur écoute le port 3000')
 });
