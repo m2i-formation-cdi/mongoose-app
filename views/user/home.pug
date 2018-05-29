@@ -10,4 +10,10 @@ block content
             th email
             th Mot de passe
             th
-        
+        each user in userList
+            tr
+                td= user.email
+                td= user.password
+                td
+                    a(class="btn" href="/user/form/" + user._id) Modif
+                    a(class="btn" href="/user/delete/" + user._id) Suppr

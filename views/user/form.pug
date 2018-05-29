@@ -5,10 +5,21 @@ block content
         form(method="post")
             .form-group
                 label email
-                input(type="email" class="form-control" name="email")
+                input(type="email" class="form-control" name="email" value=user.email)
+            .form-group
+                label Nom
+                input(type="text" class="form-control" name="userName" value=user.username)
             .form-group
                 label Mot de passe
-                input(type="password" class="form-control" name="pwd")
+                input(type="password" class="form-control" name="pwd" value=user.password)
+                input(type="hidden" name="id" value=user._id)
+            .form-group
+                label role
+                select(name="role" class="form-control")
+                    option admin
+                    option user
+                    option guest
+            
 
             .form-group
                 button(class="btn btn-primary btn-block" type="submit") Valider

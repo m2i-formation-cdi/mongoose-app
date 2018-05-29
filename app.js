@@ -1,6 +1,7 @@
 //importation des modules
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 //Importation des modèles Mongoose
 const userModel = require('./models/userModel');
@@ -10,6 +11,10 @@ const userRoutes = require('./routes/user-routes');
 
 //Initialisation de l'application
 const app = express();
+
+//Middleware body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 //connexion au serveur mongodb
 mongoose.connect('mongodb://localhost/mongo-test');
