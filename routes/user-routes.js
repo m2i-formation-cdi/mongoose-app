@@ -3,6 +3,17 @@ const userModel = require('./../models/userModel');
 
 const router = express.Router();
 
+//Middleware pour vérifier l'authentification
+router.use('', (req, res, next)=>{
+    let user = req.session.user
+    if(user && (user.role =='user' || user.role == 'admin')){
+        next();
+    } else {
+        req.session.errorMessage = "Vous devez être authentifié pour accèder aux pages user";
+        res.redirect('/login');
+    }
+});
+
 //Affichage de la liste des utilisateurs
 router.get('/', (req, res)=>{
     //Récupération des utilisateurs

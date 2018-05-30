@@ -59,7 +59,13 @@ app.post('/login', (req, res) =>{
                 //Redirection si l'utilisateur est bien authentifié
                 //Enregistrement des données de l'utilisateur dans la session
                 req.session.user = data;
-                res.redirect('/user');
+
+                if(data.role == 'guest'){
+                    res.redirect('/guest');
+                } else {
+                    res.redirect('/user');
+                }
+                
             } else {
                 //redirection si échec de l'authentification
                 //Enregistrement d'un message en variable de session
@@ -68,6 +74,11 @@ app.post('/login', (req, res) =>{
             }
         }
     });
+});
+
+//Route pour la page des invités
+app.get('/guest', (req, res) => {
+    res.render('guest');
 });
 
 //Utilisation des routes
