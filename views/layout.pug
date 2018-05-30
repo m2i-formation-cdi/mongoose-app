@@ -12,5 +12,8 @@ html
     body.container-fluid
         div(class="row justify-content-center")
             div(class="col col-md-8")
+                //Gestion des messages d'erreur
+                if error
+                    div(class="alert alert-danger") #{error}
                 block content
 

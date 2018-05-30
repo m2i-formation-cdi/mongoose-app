@@ -41,7 +41,9 @@ router.post('/form*', (req, res)=>{
     let user = {
         email: req.body.email,
         password: req.body.pwd,
-    }
+        userName: req.body.userName,
+        role: req.body.role
+    };
     if(req.body.id){
         //modification d'un utilisateur existant
         userModel.updateOne({_id: req.body.id}, user, (err)=>{

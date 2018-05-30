@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const crypto = require('crypto');
-const sha1 = crypto.createHash('sha1');
+
 
 //Création du schema
 const userSchema = new Schema({
@@ -11,6 +11,7 @@ const userSchema = new Schema({
     password: {
         type: String, required: true,
         set: val => {
+            let sha1 = crypto.createHash('sha1');
             sha1.update(val);
             return sha1.digest('hex');
         }

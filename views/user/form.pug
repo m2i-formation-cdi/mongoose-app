@@ -8,7 +8,7 @@ block content
                 input(type="email" class="form-control" name="email" value=user.email)
             .form-group
                 label Nom
-                input(type="text" class="form-control" name="userName" value=user.username)
+                input(type="text" class="form-control" name="userName" value=user.userName)
             .form-group
                 label Mot de passe
                 input(type="password" class="form-control" name="pwd" value=user.password)
@@ -16,9 +16,9 @@ block content
             .form-group
                 label role
                 select(name="role" class="form-control")
-                    option admin
-                    option user
-                    option guest
+                    option(selected=user.role=='admin') admin
+                    option(selected=user.role=='user') user
+                    option(selected=user.role=='guest') guest
             
 
             .form-group
